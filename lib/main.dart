@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './transaction.dart';
 
@@ -64,11 +65,11 @@ class MyHomePage extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(
                           vertical: 10,
-                          horizontal: 50,
+                          horizontal: 25,
                         ),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.black,
+                            color: Colors.red,
                             width: 2,
                           ),
                         ),
@@ -76,13 +77,34 @@ class MyHomePage extends StatelessWidget {
                           10,
                         ),
                         child: Text(
-                          tx.amount.toString(),
+                          '\$${tx.amount.toString()}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                       Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(tx.title.toString()),
-                          Text(tx.date.toString()),
+                          Text(
+                            tx.title.toString(),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            DateFormat('dd-MM-yyyy').format(tx.date),
+                            style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.grey,
+                              fontSize: 14,
+                            ),
+                          ),
                         ],
                       )
                     ],
