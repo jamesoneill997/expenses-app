@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
@@ -10,10 +11,10 @@ class NewTransaction extends StatefulWidget {
 
 class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
-
   final amountController = TextEditingController();
+  DateTime _selectedDate;
 
-  void submitData() {
+  void _submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
@@ -24,10 +25,28 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.addTx(
       enteredTitle,
       enteredAmount,
+      _selectedDate,
     );
 
     //close modal sheet if open
     Navigator.of(context).pop();
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime.now(),
+    ).then((date) {
+      if (date == null) {
+        return;
+      }
+
+      setState(() {
+        _selectedDate = date;
+      });
+    });
   }
 
   @override
@@ -53,7 +72,23 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               controller: amountController,
               keyboardType: TextInputType.number,
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => _submitData(),
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    _selectedDate == null
+                        ? 'No Date Chosen!'
+                        : DateFormat.yMd().format(_selectedDate),
+                  ),
+                ),
+                FlatButton(
+                  child: Text('Choose Date'),
+                  textColor: Theme.of(context).primaryColor,
+                  onPressed: _presentDatePicker,
+                )
+              ],
             ),
             FlatButton(
                 child: Text(
@@ -61,7 +96,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 ),
                 color: Colors.deepOrange,
                 onPressed: () {
-                  submitData();
+                  _submitData();
                 })
           ],
         ),
