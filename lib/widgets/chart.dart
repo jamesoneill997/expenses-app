@@ -3,6 +3,7 @@ import '../models/transaction.dart';
 import 'package:intl/intl.dart';
 import 'chart_bar.dart';
 
+//chart holder for app
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransactions;
 
