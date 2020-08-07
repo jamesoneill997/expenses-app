@@ -127,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             _showChart == false
-                ? Container(child: Text("Chart is turned off."))
+                ? Container(child: Text("Chart is turned off.1"))
                 : Container(
                     height: (MediaQuery.of(context).size.height -
                             appBar.preferredSize.height -
