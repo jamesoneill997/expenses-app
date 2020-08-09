@@ -126,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            //used to toggle chart
             _showChart == false
                 ? Container(child: Text("Chart is turned off.1"))
                 : Container(
