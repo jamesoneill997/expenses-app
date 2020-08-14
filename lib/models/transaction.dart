@@ -7,6 +7,7 @@ class Transaction {
   final double amount;
   final DateTime date;
 
+//requirements/params
   Transaction(
       {@required this.id,
       @required this.title,
