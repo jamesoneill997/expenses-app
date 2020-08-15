@@ -8,9 +8,10 @@ class Transaction {
   final DateTime date;
 
 //requirements/params
-  Transaction(
-      {@required this.id,
-      @required this.title,
-      @required this.amount,
-      @required this.date});
+  Transaction({
+    @required this.id,
+    @required this.title,
+    @required this.amount,
+    @required this.date,
+  });
 }
