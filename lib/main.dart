@@ -120,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   value: _showChart,
                   onChanged: (val) {
                     setState(() {
+                      //switch state updates
                       _showChart = val;
                     });
                   },
