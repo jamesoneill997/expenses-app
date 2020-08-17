@@ -113,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Row(
+              //dynamic for screen size
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text('Show Chart'),
